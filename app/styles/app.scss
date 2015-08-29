@@ -1,0 +1,20 @@
+@import 'base';
+@import 'swing';
+
+body {
+	margin: 0;
+	background: rgb(169, 177, 115);
+	overflow: hidden;
+}
+.Viewport {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	// background-image: radial-gradient(rgba(white, 0.5), transparent);
+}
+.Viewport-inner {
+	margin: auto;
+	padding: 2rem;
+	background: rgba(63, 58, 34, 0.25);
+	border-radius: 0.3rem;
+}

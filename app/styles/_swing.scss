@@ -1,0 +1,50 @@
+.Stack {
+	margin: auto;
+	padding: 0;
+	list-style: none;
+	min-width: 250px;
+	// width: 40vw;
+	// max-width: 28rem;
+	height: 450px;
+	position: relative; // contain cards
+	border-radius: 0.3rem;
+	background: rgba(black, 0.2);
+}
+.Stack-card {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 1rem;
+	background: #fafafa;
+	border: 5px solid #ECECEC;
+	border-radius: 0.3rem;
+	box-shadow: 0 0 2px rgba(0,0,0,.2), 1px 1px 1px rgba(0,0,0,.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column nowrap;
+	// font-size: 1.1vw;
+
+	&:hover {
+		cursor: grab;
+	}
+
+	&.is-dragging {
+		color: yellow;
+	}
+
+	&.in-stacked {
+		color: green;
+		// background: #1E824C;
+		&:nth-child(2) {
+			top: 4px;
+			transform: translate(-4px, -2px) rotate(-1deg);
+		}
+		&:nth-child(3) {
+			top: 2px;
+			transform: translate(2px, 2px) rotate(0.4deg);
+		}
+	}
+}
