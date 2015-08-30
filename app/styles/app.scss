@@ -10,9 +10,11 @@ body {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
 	// background-image: radial-gradient(rgba(white, 0.5), transparent);
 }
-.Viewport-inner {
+.Board {
 	margin: auto;
 	padding: 2rem;
 	background: rgba(63, 58, 34, 0.25);

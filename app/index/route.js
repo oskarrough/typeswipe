@@ -106,22 +106,22 @@ const typefaces = [
 	'Source Sans Pro',
 	'Source Serif Pro',
 	'Squada One',
-	'Stint Ultra Expanded',
+	'Stint Ultra Expanded',*/
 	'Titillium Web',
 	'Ubuntu',
 	'Ultra',
 	'Unica One',
 	'Varela Round',
-	'Vollkorn',*/
+	'Vollkorn',
 	'Walter Turncoat',
 	'Work Sans',
 	'Yeseva One'];
 
 export default Ember.Route.extend({
 	beforeModel() {
-		window.WebFont.load({
-			google: { families: typefaces }
-		});
+		// window.WebFont.load({
+		// 	google: { families: typefaces }
+		// });
 	},
 	model() {
 		// return this.store.get('typeface');

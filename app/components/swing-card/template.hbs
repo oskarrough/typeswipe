@@ -1,7 +1,8 @@
-<span style="font-family: {{card.title}}">
+<span style={{fontFamily}}>
+	<h3>{{card.title}}</h3>
 	{{yield}}
 </span>
 
-<footer>
-	direction: {{direction}}
-</footer>
+{{#unless isDecked}}
+	{{throwDirection}}
+{{/unless}}
