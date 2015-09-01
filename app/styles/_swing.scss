@@ -1,16 +1,22 @@
-.Stack {
+.Swing {
 	margin: auto;
+
+	&:focus {
+		outline: none;
+	}
+}
+.Swing-stack {
 	padding: 0;
 	list-style: none;
-	min-width: 250px;
 	// width: 40vw;
+	// min-width: 250px;
 	// max-width: 28rem;
-	height: 450px;
+	height: 300px;
 	position: relative; // contain cards
 	border-radius: 0.3rem;
 	background: rgba(black, 0.2);
 }
-.Stack-card {
+.Swing-card {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -25,19 +31,21 @@
 	align-items: center;
 	justify-content: center;
 	flex-flow: column nowrap;
+	text-align: center;
 	// font-size: 1.1vw;
-
-	&:hover {
-		cursor: grab;
-	}
+	cursor: grab;
 
 	&.is-dragging {
-		opacity: 0.9;
+		// opacity: 0.9;
+		box-shadow: 0 0 4px rgba(0,0,0,.2), 2px 2px 2px rgba(0,0,0,.2);
 	}
 
-	&.in-stacked {
-		color: green;
-		// background: #1E824C;
+	&.is-top {
+		border-color: darken(#ececec, 5%);
+	}
+
+	// bit more diverse stack
+	&.is-stacked {
 		&:nth-child(2) {
 			top: 4px;
 			transform: translate(-4px, -2px) rotate(-1deg);

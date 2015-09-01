@@ -1,7 +1,8 @@
 <section class="Board">
 	{{#swing-stack cards=model as |stack card|}}
 		{{#swing-card card=card stack=stack.stack}}
-			<p>Something more.</p>
+			<p>The other two, slight air and purging fire,<br>
+			Are both with thee, wherever I abide;</p>
 		{{/swing-card}}
 	{{/swing-stack}}
 </section>
@@ -9,8 +10,7 @@
 {{outlet}}
 
 {{!-- <p>
-The other two, slight air and purging fire,<br>
-Are both with thee, wherever I abide;<br>
+<br>
 The first my thought, the other my desire,<br>
 These present-absent with swift motion slide.<br>
 For when these quicker elements are gone<br>
@@ -23,9 +23,4 @@ Who even but now come back again, assured<br>
 Of thy fair health, recounting it to me:<br>
 This told, I joy; but then no longer glad,<br>
 I send them back again and straight grow sad.
-</p> --}}
-
-{{!-- <p>
-	<button onclick="card.throwOut(600, -100)">Throw out</button>
-	<button onclick="card.throwIn(600, -100)">Throw in</button>
 </p> --}}

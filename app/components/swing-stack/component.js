@@ -1,27 +1,53 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-	tagName: 'ul',
-	classNames: ['Stack'],
+const swing = window.gajus.Swing;
 
-	config: {
-		minThrowOutDistance: 300, /* card width */
-		maxThrowOutDistance: 300
+export default Ember.Component.extend({
+	classNames: ['Swing'],
+	stack: null, // Swing Stack instance
+
+	swingConfig: {
+		minThrowOutDistance: 280, // card width
+		maxThrowOutDistance: 320,
+		/**
+		 * Invoked in the event of dragmove.
+		 * Returns a value between 0 and 1 indicating the completeness of the throw out condition.
+		 * Ration of the absolute distance from the original card position and element width.
+		 *
+		 * @param {Number} offset Distance from the dragStart.
+		 * @param {HTMLElement} element Element.
+		 * @return {Number}
+		*/
+		throwOutConfidence: function (offset, element) {
+			return Math.min(Math.abs(offset) / (element.offsetWidth/2), 1);
+		}
 	},
 
-	// Set an instance of our Swing stack
-	registerStack: Ember.on('init', function() {
-		var swing = window.gajus.Swing;
-		this.set('stack', swing.Stack(this.get('config')));
+	enableSwingPlugin: Ember.on('init', function() {
+		this.set('stack', swing.Stack(this.get('swingConfig')));
+	}),
+
+	setFocusForKeyboardEvents: Ember.on('didInsertElement', function() {
+    return this.$().attr({ tabindex: 1 }), this.$().focus();
+  }),
+
+	cardsInDeck: Ember.computed('childViews.@each.isDecked', function() {
+		// return this.get('cards').filterBy('isDecked').get('lastObject');
+		return this.get('childViews').filterBy('isDecked');
+	}),
+
+	topCardComponent: Ember.computed('childViews.@each.isDecked', function() {
+		let component = this.get('cardsInDeck').get('lastObject');
+		return component;
 	}),
 
 	keyUp(event) {
-		console.log(event);
-		if (event.which === 37) {
-			console.log('go left');
-		}
-		if (event.which === 39) {
-			console.log('go right');
+		if (event.keyCode === 37) { // LEFT
+			this.send('throwLeft');
+		} else if (event.keyCode === 39) { // RIGHT
+			this.send('throwRight');
+		} else if (event.keyCode === 27) { // ESC/
+			this.send('throwIn');
 		}
 	},
 
@@ -29,12 +55,17 @@ export default Ember.Component.extend({
 		createCard(element) {
 			return this.get('stack').createCard(element);
 		},
-		remove(index) {
-			console.log('remove item ' + index);
-			//  this.get('items')splice(index, 1);
+		throwLeft() {
+			let card = this.get('topCardComponent.swingCard');
+			card.throwOut(-200, -100);
 		},
-		dragstart(eventObject) {
-			console.log(eventObject);
+		throwRight() {
+			let card = this.get('topCardComponent.swingCard');
+			card.throwOut(200, -100);
+		},
+		throwIn() {
+			let card = this.get('topCardComponent.swingCard');
+			card.throwIn(-200, -100);
 		}
 	}
 });

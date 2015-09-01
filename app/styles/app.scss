@@ -3,7 +3,7 @@
 
 body {
 	margin: 0;
-	background: rgb(169, 177, 115);
+	background: #A6B2BB;
 	overflow: hidden;
 }
 .Viewport {
@@ -16,7 +16,8 @@ body {
 }
 .Board {
 	margin: auto;
-	padding: 2rem;
+	padding: 1rem;
 	background: rgba(63, 58, 34, 0.25);
 	border-radius: 0.3rem;
+	max-width: 300px;
 }

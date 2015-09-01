@@ -1,3 +1,15 @@
-{{#each cards as |card|}}
-	{{yield this card}}
-{{/each}}
+<ul class="Swing-stack">
+	{{#each cards as |card|}}
+		{{yield this card}}
+	{{/each}}
+</ul>
+
+<p style="min-height: 3.4em;">
+	How do you like <em>{{topCardComponent.card.title}}</em>? You've thrown out {{cardsInDeck.length}} out of {{cards.length}} cards.
+</p>
+
+<menu>
+	<button onclick={{action (action "throwLeft")}}>Throw left</button>
+	{{!-- <button onclick={{action (action "throwIn")}}>Throw in</button> --}}
+	<button onclick={{action (action "throwRight")}}>Throw right</button>
+</menu>

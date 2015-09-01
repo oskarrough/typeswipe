@@ -1,7 +1,19 @@
 import Ember from 'ember';
 
+function fisherYates (myArray) {
+	var i = myArray.length;
+	if ( i === 0 ) { return false; }
+	while ( --i ) {
+		var j = Math.floor( Math.random() * ( i + 1 ) );
+		var tempi = myArray[i];
+		var tempj = myArray[j];
+		myArray[i] = tempj;
+		myArray[j] = tempi;
+	}
+}
+
 const typefaces = [
-	/*'ABeeZee',
+	'ABeeZee',
 	'Abel',
 	'Abril Fatface',
 	'Alegreya Sans',
@@ -106,7 +118,7 @@ const typefaces = [
 	'Source Sans Pro',
 	'Source Serif Pro',
 	'Squada One',
-	'Stint Ultra Expanded',*/
+	'Stint Ultra Expanded',
 	'Titillium Web',
 	'Ubuntu',
 	'Ultra',
@@ -115,16 +127,25 @@ const typefaces = [
 	'Vollkorn',
 	'Walter Turncoat',
 	'Work Sans',
-	'Yeseva One'];
+	'Yeseva One'
+];
 
 export default Ember.Route.extend({
 	beforeModel() {
-		// window.WebFont.load({
-		// 	google: { families: typefaces }
-		// });
+		// https://developers.google.com/fonts/docs/getting_started#Optimizing_Requests
+		// https://developers.google.com/fonts/docs/developer_api
+		window.WebFont.load({
+			// google: { families: typefaces }
+			google: { families: ['Oswald'] }
+		});
 	},
 	model() {
 		// return this.store.get('typeface');
+
+		// shuffle the array
+		fisherYates(typefaces);
+
+		// return a model for each typeface
 		return typefaces.map((typeface) => {
 			return this.store.createRecord('typeface', {
 				title: typeface
