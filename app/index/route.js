@@ -134,10 +134,10 @@ export default Ember.Route.extend({
 	beforeModel() {
 		// https://developers.google.com/fonts/docs/getting_started#Optimizing_Requests
 		// https://developers.google.com/fonts/docs/developer_api
-		window.WebFont.load({
-			// google: { families: typefaces }
-			google: { families: ['Oswald'] }
-		});
+		// window.WebFont.load({
+		// 	// google: { families: typefaces }
+		// 	google: { families: ['Oswald'] }
+		// });
 	},
 	model() {
 		// return this.store.get('typeface');

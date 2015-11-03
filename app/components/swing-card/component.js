@@ -40,9 +40,9 @@ export default Ember.Component.extend({
 		});
 
 		// load the font needed
-		// window.WebFont.load({
-		// 	google: { families: [this.get('card.title')] }
-		// });
+		window.WebFont.load({
+			google: { families: [this.get('card.title')] }
+		});
 
 		return this.bindEvents(swingCard);
 	},
