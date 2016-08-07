@@ -69,7 +69,7 @@ export default Ember.Component.extend({
 		throwoutright(/*e*/) {},
 		throwin(/*e*/) { this.set('isDecked', true); },
 		dragstart(/*e*/) { this.set('isDecked', false); this.set('isDragging', true); },
-		dragmove(e) {
+		dragmove() {
 			// this.set('throwDirection', e.throwDirection);
 			// this.set('throwDirectionHuman', e.throwDirection === 1 ? 'right' : 'left');
 		},
